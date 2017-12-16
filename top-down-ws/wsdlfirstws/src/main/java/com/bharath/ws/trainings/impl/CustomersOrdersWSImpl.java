@@ -25,29 +25,38 @@ public class CustomersOrdersWSImpl implements CustomerOrdersPortType {
 		product.setDescription("IPhone");
 		product.setId("1");
 		product.setQuantity(BigInteger.valueOf(3));
+        Order order2 = new Order();
+        order2.setId(BigInteger.valueOf(2));
+        Product product2 = new Product();
+        product2.setDescription("IPad");
+        product2.setId("2");
+        product2.setQuantity(BigInteger.valueOf(1));
 
 		order.getProduct().add(product);
+		order2.getProduct().add(product2);
 
 		orders.add(order);
+		orders.add(order2);
 		customerOrders.put(BigInteger.valueOf(++currentCustomerId), orders);
 	}
 
 	@Override
-	public GetOrdersResponse getOrders(GetOrdersRequest request) {
-		BigInteger customerId = request.getCustomerId();
-		List<Order> orders = customerOrders.get(customerId);
+    public GetOrdersResponse getOrders(GetOrdersRequest request) {
+        BigInteger customerId = request.getCustomerId();
+        List<Order> orders = customerOrders.get(customerId);
 
-		GetOrdersResponse response = new GetOrdersResponse();
-		List<Order> responseOrders = response.getOrder();
-		responseOrders.addAll(orders);
+        GetOrdersResponse response = new GetOrdersResponse();
+        List<Order> responseOrders = response.getOrder();
+        responseOrders.addAll(orders);
 
-		return response;
-	}
+        return response;
+    }
 
 	@Override
 	public DeleteOrdersResponse deleteOrders(DeleteOrdersRequest request) {
 		BigInteger customerId = request.getCustomerId();
 		List<Order> orders = customerOrders.get(customerId);
+        orders.remove(0);
 
 		DeleteOrdersResponse response = new DeleteOrdersResponse();
 		List<Order> responseOrders = response.getOrder();
