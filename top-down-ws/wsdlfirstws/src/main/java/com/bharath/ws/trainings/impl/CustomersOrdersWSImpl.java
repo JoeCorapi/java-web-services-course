@@ -6,13 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.bharath.ws.trainings.CreateOrdersRequest;
-import com.bharath.ws.trainings.CreateOrdersResponse;
-import com.bharath.ws.trainings.CustomerOrdersPortType;
-import com.bharath.ws.trainings.GetOrdersRequest;
-import com.bharath.ws.trainings.GetOrdersResponse;
-import com.bharath.ws.trainings.Order;
-import com.bharath.ws.trainings.Product;
+import com.bharath.ws.trainings.*;
 
 public class CustomersOrdersWSImpl implements CustomerOrdersPortType {
 
@@ -48,6 +42,19 @@ public class CustomersOrdersWSImpl implements CustomerOrdersPortType {
 		responseOrders.addAll(orders);
 
 		return response;
+	}
+
+	@Override
+	public DeleteOrdersResponse deleteOrders(DeleteOrdersRequest request) {
+		BigInteger customerId = request.getCustomerId();
+		List<Order> orders = customerOrders.get(customerId);
+
+		DeleteOrdersResponse response = new DeleteOrdersResponse();
+		List<Order> responseOrders = response.getOrder();
+		responseOrders.addAll(orders);
+
+		return response;
+
 	}
 
 	@Override

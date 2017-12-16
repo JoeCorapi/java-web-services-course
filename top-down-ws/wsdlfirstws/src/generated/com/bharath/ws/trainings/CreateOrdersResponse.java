@@ -43,10 +43,10 @@ public class CreateOrdersResponse {
 
     /**
      * Sets the value of the result property.
-     *
+     * 
      */
-    public void setResult(boolean b) {
-        this.result = b;
+    public void setResult(boolean value) {
+        this.result = value;
     }
 
 }
