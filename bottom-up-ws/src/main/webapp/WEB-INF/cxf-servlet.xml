@@ -9,6 +9,9 @@
 		<bean class="com.trainings.ws.soap.PaymentProcessorImpl"/>
 	</jaxws:serviceBean>
 </jaxws:server>
+	<jaxws:inInterceptors>
+
+	</jaxws:inInterceptors>
 
 	<cxf:bus>
 		<cxf:features>
