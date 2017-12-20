@@ -1,6 +1,8 @@
 package com.bharaththippireddy.trainings.jaxrs;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Patient {
 	private long id;
 	private String name;

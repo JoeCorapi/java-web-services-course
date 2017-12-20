@@ -4,6 +4,7 @@ import javax.jws.WebService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+@Produces({"application/xml", "application/json"})
 public interface PatientService {
 
 	@GET
