@@ -2,7 +2,7 @@ package com.bharaththippireddy.trainings.jaxrs;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name = "Medicine")
 public class Medicine {
 	private long id;
 	private String description;
