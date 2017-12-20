@@ -27,22 +27,45 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	public Response addPatient(Patient patient) {
-        return null;
+        System.out.println("...invoking addPatient( " + patient.getName() +")");
+        patient.setId(++currentId);
+        patients.put(patient.getId(), patient);
+        return Response.ok(patient).build();
 	}
 
 	public Patient getPatient(String id) {
-
-		return null;
+        System.out.println("...invoking getPatient id(" + id +")");
+		return patients.get(Long.parseLong(id));
 	}
 
 	public Response updatePatient(Patient updatedPatient) {
+        System.out.println("...invoking updatePatient( " + updatedPatient.getName() +")");
 
-		return null;
+        Patient currentPatient = patients.get(updatedPatient.getId());
+        Response response;
+        if (currentPatient != null) {
+            patients.put(currentPatient.getId(), updatedPatient);
+            response = Response.ok().build();
+        } else {
+            response = Response.notModified().build();
+        }
+        return response;
 	}
 
 	public Response deletePatients(String id) {
+        System.out.println("...invoking deleteatient id( " + id +")");
 
-		return null;
+        Long patientID = Long.parseLong(id);
+        Patient patient = patients.get(patientID);
+        Response response = null;
+
+        if (patient != null) {
+            patients.remove(patientID);
+            response = Response.ok().build();
+        } else {
+            response =  Response.notModified().build();
+        }
+		return response;
 	}
 
 	public Prescription getPrescription(String prescriptionId) {
