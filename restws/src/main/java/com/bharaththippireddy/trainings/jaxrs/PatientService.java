@@ -23,6 +23,7 @@ public interface PatientService {
 	@Path("/patients/{id}/")
 	Response deletePatients(@PathParam("id") String id);
 
-	Prescription getPrescription(String prescriptionId);
+	@Path("/prescriptions/{id}")
+	Prescription getPrescription(@PathParam("id") String prescriptionId);
 
 }

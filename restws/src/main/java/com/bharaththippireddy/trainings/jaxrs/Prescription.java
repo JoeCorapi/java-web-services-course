@@ -34,7 +34,9 @@ public class Prescription {
 		this.description = description;
 	}
 
-	public Medicine getMedicine(int medicineid) {
+	@GET
+	@Path("/medicines/{id}")
+	public Medicine getMedicine(@PathParam("id") int medicineid) {
 		System.out.println("----invoking getMedicine with id: " + medicineid);
 		Medicine medicine = prescriptions.get(new Long(medicineid));
 		return medicine;
