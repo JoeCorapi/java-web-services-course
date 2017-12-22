@@ -12,8 +12,12 @@
 
 		<jaxrs:providers>
 			<ref bean="jacksonProvider"/>
+			<ref bean="exceptionHandler"/>
 		</jaxrs:providers>
 	</jaxrs:server>
+
+	<bean id="exceptionHandler"
+		  class="com.bharaththippireddy.trainings.jaxrs.exceptionmappers.BusinessExceptionMapper" />
 
 	<bean id = "serviceBean" class="com.bharaththippireddy.trainings.jaxrs.PatientServiceImpl"/>
 
