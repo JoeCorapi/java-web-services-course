@@ -2,6 +2,7 @@ package com.bharaththippireddy.trainings.jaxrs.client;
 
 import com.bharaththippireddy.trainings.jaxrs.ChecksList;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.ExecutionException;
@@ -21,6 +22,11 @@ public class CheckProcessor {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
+
+            if(e.getCause() instanceof BadRequestException) {
+                BadRequestException bre = (BadRequestException) e.getCause();
+                System.out.println("Checks should be provided");
+            }
             e.printStackTrace();
         }
     }
