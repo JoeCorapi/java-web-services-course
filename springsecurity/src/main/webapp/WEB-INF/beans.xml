@@ -12,6 +12,10 @@
 		<jaxrs:serviceBeans>
 			<ref bean="productService"/>
 		</jaxrs:serviceBeans>
+
+		<jaxrs:providers>
+			<bean class="com.bharaththippireddy.trainings.jaxrs.SecurityExceptionMapper"/>
+		</jaxrs:providers>
 	</jaxrs:server>
 
 	<bean id="productService" class="com.bharaththippireddy.trainings.jaxrs.ProductServiceImpl"/>
