@@ -10,8 +10,11 @@ import org.springframework.security.access.annotation.Secured;
 
 public interface ProductService {
 
-	
+	@GET
+	@Path("/products")
 	List<Product> getProducts();
 
+	@POST
+	@Path("/products")
 	int addProduct(Product product);
 }
